@@ -1,7 +1,7 @@
 import express from "express";
 
 import path from "path";
-import microCors from "micro-cors";
+import cors from "cors";
 
 import movieRouter from "./routes/movieRoutes.js";
 import AppError from "./utils/appError.js";
@@ -9,14 +9,15 @@ import AppError from "./utils/appError.js";
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 const app = express();
 
-const cors = microCors({
-  allowMethods: ["GET", "POST", "OPTIONS"],
-  origin: "*",
-});
+app.set("trust proxy", 1); // trust first proxy
 
-app.use(cors);
-
-app.use(cors({ origin: "*" }));
+app.use(
+  cors({
+    origin: "https://next-one-similar-movies-client.vercel.app", // frontend dev server
+    credentials: true, // permite trimiterea cookie-urilor
+  })
+);
+app.options("*", cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use((req, res, next) => {
