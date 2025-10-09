@@ -8,10 +8,6 @@ import AppError from "./utils/appError.js";
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 const app = express();
 
-app.get("/api/test", (req, res) => {
-  res.send("Server Vercel funcționează!");
-});
-
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
