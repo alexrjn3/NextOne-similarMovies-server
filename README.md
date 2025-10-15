@@ -5,3 +5,8 @@ https://nextone-similarmovies-server.onrender.com/api/v1/movies/ -> GET ALL MOVI
 https://nextone-similarmovies-server.onrender.com/api/v1/movies/:id -> GET MOVIE
 
 https://nextone-similarmovies-server.onrender.com/api/v1/movies/similarity/:movie => GET SIMILAR MOVIES
+
+
+Client:
+
+https://github.com/alexrjn3/NextOne-similarMovies-client
